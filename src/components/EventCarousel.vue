@@ -56,7 +56,7 @@ const events = ref([
   padding: 10px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(82, 82, 82, 0.2);
   text-align: center;
   color: black;
 }
