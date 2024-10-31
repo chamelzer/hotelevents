@@ -31,7 +31,6 @@ const events = ref([
       <div v-for="event in events" :key="event.id" class="card">
         <h3>{{ event.title }}</h3>
         <p>{{ event.description }}</p>
-        <p>hejjjj</p>
       </div>
     </div>
   </div>
@@ -40,7 +39,7 @@ const events = ref([
 <style scoped>
 /* Konfigurer containerens størrelse */
 .slider-container {
-  overflow: hidden;
+  overflow: wrap;
   width: 100%;
   max-width: 600px; /* Juster denne efter behov */
   margin: auto;
@@ -55,9 +54,10 @@ const events = ref([
   min-width: 200px;
   margin-right: 20px;
   padding: 10px;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  color: black;
 }
 </style>
