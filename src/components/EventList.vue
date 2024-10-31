@@ -1,5 +1,6 @@
 <script setup>
 import EventCards from '@/components/EventCards.vue';
+import EventCarousel from './EventCarousel.vue';
 
 </script>
 
@@ -13,6 +14,7 @@ import EventCards from '@/components/EventCards.vue';
     </div>
     
 <EventCards />
+<EventCarousel />
 </template>
 
 <style scoped>
