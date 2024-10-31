@@ -17,6 +17,7 @@ const events = ref([
       <div v-for="event in events" :key="event.id" class="card">
         <h3>{{ event.title }}</h3>
         <p>{{ event.description }}</p>
+        <p>hejjjj</p>
       </div>
     </div>
   </div>
