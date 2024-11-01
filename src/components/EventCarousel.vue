@@ -4,24 +4,34 @@ import { ref } from 'vue';
 // Dummy data for events
 const events = ref([
   { id: 1, 
+    image: 'event1.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
     title: 'Event 1', 
-    description: 'Beskrivelse af Event 1' },
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
 
   { id: 2, 
+    image: 'event2.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
     title: 'Event 2', 
-    description: 'Beskrivelse af Event 2' },
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
 
   { id: 3, 
+    image: 'event3.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
     title: 'Event 3', 
-    description: 'Beskrivelse af Event 3' },
-
-  { id: 4, 
-    title: 'Event 4', 
-    description: 'Beskrivelse af Event 4' },
-
-  { id: 5, 
-    title: 'Event 5', 
-    description: 'Beskrivelse af Event 5' },
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
 ]);
 </script>
 
@@ -29,8 +39,16 @@ const events = ref([
   <div class="slider-container">
     <div class="slider">
       <div v-for="event in events" :key="event.id" class="card">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.description }}</p>
+
+        <div class="image"> {{ event.image }} </div>
+        <p class="month"> {{ event.month }} </p>
+        <p class="day"> {{ event.day }} </p>
+        <p class="tag"> {{ event.tag }} </p>
+        <h3 class="title">{{ event.title }} </h3>
+        <p class="time">{{ event.time }} </p>
+        <button class="primaryButton">{{ event.primaryButton }} </button>
+        <button class="secondaryButton">{{ event.secondaryButton }} </button>
+
       </div>
     </div>
   </div>
