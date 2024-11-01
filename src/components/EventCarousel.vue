@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-// Dummy data for events
+// Events
 const events = ref([
   { id: 1, 
     image: 'event1.jpg',
@@ -24,6 +24,46 @@ const events = ref([
     secondaryButton: 'Læs mere' },
 
   { id: 3, 
+    image: 'event3.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
+    title: 'Event 3', 
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
+
+    { id: 3, 
+    image: 'event3.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
+    title: 'Event 3', 
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
+
+    { id: 3, 
+    image: 'event3.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
+    title: 'Event 3', 
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
+
+    { id: 3, 
+    image: 'event3.jpg',
+    month: 'Oktober',
+    day: '14',
+    tag: 'Populært',
+    title: 'Event 3', 
+    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    primaryButton: 'Book bord',
+    secondaryButton: 'Læs mere' },
+
+    { id: 3, 
     image: 'event3.jpg',
     month: 'Oktober',
     day: '14',
@@ -55,27 +95,39 @@ const events = ref([
 </template>
 
 <style scoped>
-/* Konfigurer containerens størrelse */
-.slider-container {
-  overflow: wrap;
-  width: 100%;
-  max-width: 600px; /* Juster denne efter behov */
-  margin: auto;
-  border-radius: 10px;
-}
 
-.slider {
+.slider-container {
   display: flex;
+  justify-content: center;
+  width: 100%;
+  height: fit-content;
+  border: red solid 1px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+.slider {
+  box-sizing: border-box;
+  border:blue solid 1px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 100px 0 100px;
+  width: 100%;
+  max-width: 1100px;
 }
 
 .card {
   min-width: 200px;
-  margin-right: 20px;
-  padding: 10px;
+  margin: 0 30px;
+  padding:20px 50px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(82, 82, 82, 0.2);
   text-align: center;
   color: black;
+  border: chartreuse solid 1px;
 }
 </style>
