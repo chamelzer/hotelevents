@@ -44,8 +44,8 @@ const events = ref([
         <div class="image">
           {{ event.image }} 
           <div class="date">
-            <p class="month"> {{ event.month }} </p>
-            <p class="day"> {{ event.day }} </p>
+            <div class="month"> {{ event.month }} </div>
+            <div class="day"> {{ event.day }} </div>
           </div>
         </div>
 
@@ -92,65 +92,16 @@ const events = ref([
   padding: 0 100px 0 100px;
   width: 100%;
   max-width: 1100px;
+  gap: 20px;
 }
 
 .card {
-  min-width: 200px;
-  margin: 0 30px;
-  padding:20px 50px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(82, 82, 82, 0.2);
-  text-align: center;
-  color: black;
-  border: chartreuse solid 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF;
+  box-shadow: 0px 4px 8px 0px rgba(162, 162, 162, 0.25);
+  border: orange solid 1px;
 }
 
-.image{
-
-}
-
-.date{
-
-}
-
-.month{
-
-}
-
-.day{
-
-}
-
-.contnet{
-
-}
-
-.tagdiv{
-
-}
-
-.tag{
-
-}
-
-.title{
-
-} 
-
-.time{
-
-}
-
-.buttons{
-
-}
-
-.primaryButton{ 
-
-}
-
-.secondaryButton{
-
-}
 </style>
