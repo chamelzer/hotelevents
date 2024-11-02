@@ -4,74 +4,35 @@ import { ref } from 'vue';
 // Events
 const events = ref([
   { id: 1, 
+    title: 'Dinner Days på HC by Meyers', 
     image: 'event1.jpg',
-    month: 'Oktober',
+    month: 'Okt',
     day: '14',
     tag: 'Populært',
-    title: 'Event 1', 
     time: '14. - 20. oktober 2024 - 16:30-19:30',
     primaryButton: 'Book bord',
     secondaryButton: 'Læs mere' },
 
   { id: 2, 
+    title: 'Cozy Loungebar', 
     image: 'event2.jpg',
-    month: 'Oktober',
+    month: 'Okt',
     day: '14',
     tag: 'Populært',
-    title: 'Event 2', 
     time: '14. - 20. oktober 2024 - 16:30-19:30',
     primaryButton: 'Book bord',
     secondaryButton: 'Læs mere' },
 
   { id: 3, 
+    title: 'Cocktailbar', 
     image: 'event3.jpg',
-    month: 'Oktober',
-    day: '14',
+    month: 'Okt',
+    day: '25',
     tag: 'Populært',
-    title: 'Event 3', 
-    time: '14. - 20. oktober 2024 - 16:30-19:30',
+    time: '25. oktober 2024 - 16:30-19:30',
     primaryButton: 'Book bord',
     secondaryButton: 'Læs mere' },
 
-    { id: 3, 
-    image: 'event3.jpg',
-    month: 'Oktober',
-    day: '14',
-    tag: 'Populært',
-    title: 'Event 3', 
-    time: '14. - 20. oktober 2024 - 16:30-19:30',
-    primaryButton: 'Book bord',
-    secondaryButton: 'Læs mere' },
-
-    { id: 3, 
-    image: 'event3.jpg',
-    month: 'Oktober',
-    day: '14',
-    tag: 'Populært',
-    title: 'Event 3', 
-    time: '14. - 20. oktober 2024 - 16:30-19:30',
-    primaryButton: 'Book bord',
-    secondaryButton: 'Læs mere' },
-
-    { id: 3, 
-    image: 'event3.jpg',
-    month: 'Oktober',
-    day: '14',
-    tag: 'Populært',
-    title: 'Event 3', 
-    time: '14. - 20. oktober 2024 - 16:30-19:30',
-    primaryButton: 'Book bord',
-    secondaryButton: 'Læs mere' },
-
-    { id: 3, 
-    image: 'event3.jpg',
-    month: 'Oktober',
-    day: '14',
-    tag: 'Populært',
-    title: 'Event 3', 
-    time: '14. - 20. oktober 2024 - 16:30-19:30',
-    primaryButton: 'Book bord',
-    secondaryButton: 'Læs mere' },
 ]);
 </script>
 
@@ -80,15 +41,29 @@ const events = ref([
     <div class="slider">
       <div v-for="event in events" :key="event.id" class="card">
 
-        <div class="image"> {{ event.image }} </div>
-        <p class="month"> {{ event.month }} </p>
-        <p class="day"> {{ event.day }} </p>
-        <p class="tag"> {{ event.tag }} </p>
-        <h3 class="title">{{ event.title }} </h3>
-        <p class="time">{{ event.time }} </p>
-        <button class="primaryButton">{{ event.primaryButton }} </button>
-        <button class="secondaryButton">{{ event.secondaryButton }} </button>
+        <div class="image">
+          {{ event.image }} 
+          <div class="date">
+            <p class="month"> {{ event.month }} </p>
+            <p class="day"> {{ event.day }} </p>
+          </div>
+        </div>
 
+        <div class="content">
+          <div class="tagdiv">
+            <p class="tag"> {{ event.tag }} </p>
+          </div>
+
+          <div>
+            <h3 class="title"> {{ event.title }} </h3>
+            <p class="time"> {{ event.time }} </p>
+          </div>
+
+          <div class="buttons">
+            <button class="primaryButton"> {{ event.primaryButton }} </button>
+            <button class="secondaryButton"> {{ event.secondaryButton }} </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -129,5 +104,53 @@ const events = ref([
   text-align: center;
   color: black;
   border: chartreuse solid 1px;
+}
+
+.image{
+
+}
+
+.date{
+
+}
+
+.month{
+
+}
+
+.day{
+
+}
+
+.contnet{
+
+}
+
+.tagdiv{
+
+}
+
+.tag{
+
+}
+
+.title{
+
+} 
+
+.time{
+
+}
+
+.buttons{
+
+}
+
+.primaryButton{ 
+
+}
+
+.secondaryButton{
+
 }
 </style>
