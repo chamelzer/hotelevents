@@ -53,6 +53,7 @@ const images = [
             <button class="secondaryButton"> {{ event.secondaryButton }} </button>
           </div>
         </div>
+  </Carousel>
 </template>
 
 <style scoped>
