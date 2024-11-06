@@ -1,0 +1,33 @@
+{
+    "event1": {
+      "image": "/event1.jpg",
+      "secondaryButton": "Læs mere",
+      "description": "Læs mereLæs mereLæs mereLæs mereLæs mereLæs mere"
+    },
+    "event2": {
+      "image": "event2.jpg",
+      "primaryButton": "Book bord",
+      "secondaryButton": "Læs mere"
+    },
+    "event3": {
+      "image": "event3.jpg",
+      "primaryButton": "Book bord",
+      "secondaryButton": "Læs mere"
+    },
+    "event4": {
+      "image": "event3.jpg",
+      "primaryButton": "Book bord",
+      "secondaryButton": "Læs mere"
+    },
+    "event5": {
+      "image": "event3.jpg",
+      "primaryButton": "Book bord",
+      "secondaryButton": "Læs mere"
+    },
+    "event6": {
+      "image": "event3.jpg",
+      "primaryButton": "Book bord",
+      "secondaryButton": "Læs mere"
+    }
+  }
+  
