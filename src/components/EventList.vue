@@ -14,7 +14,7 @@ const fetchEvents = async () => {
   try {
     const response = await fetch("https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events.json");
     if (!response.ok) {
-      throw new Error("Failed to fetch data from Firebase");
+      throw new Error("fejl");
     }
     const firebaseData = await response.json();
 
@@ -24,16 +24,10 @@ const fetchEvents = async () => {
         id, 
         ...event, 
         image: localData ? localData.image : null, 
-        buttons: localData
-          ? [
-              localData.primaryButton && { label: localData.primaryButton, url: "#", color: "#00bfff", style: "primary" },
-              localData.secondaryButton && { label: localData.secondaryButton, url: "#ff5733", style: "secondary" }
-            ].filter(Boolean) 
-          : [],
       };
     });
   } catch (error) {
-    console.error("Error fetching data: ", error);
+    console.error("fejl:", error);
   }
 };
 
@@ -57,7 +51,7 @@ const tagColors = {
 };
 
 const getTagColor = (tag) => {
-  return tagColors[tag] || "#E1C58B";
+  return tagColors[tag] || "#ffffff";
 };
 
 </script>
