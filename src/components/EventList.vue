@@ -18,19 +18,18 @@ const fetchEvents = async () => {
     }
     const firebaseData = await response.json();
 
-    // Transform the Firebase data into an array and merge with local data
     eventsData.value = Object.entries(firebaseData).map(([id, event]) => {
       const localData = EventsData[id];  
       return {
-        id, // Keep the ID from Firebase
-        ...event, // Spread Firebase event details
-        image: localData ? localData.image : null, // Use image from local data if available
+        id, 
+        ...event, 
+        image: localData ? localData.image : null, 
         buttons: localData
           ? [
               localData.primaryButton && { label: localData.primaryButton, url: "#", color: "#00bfff", style: "primary" },
               localData.secondaryButton && { label: localData.secondaryButton, url: "#ff5733", style: "secondary" }
-            ].filter(Boolean) // Filter out null entries if any button is missing
-          : [], // Default to empty array if no buttons in local data
+            ].filter(Boolean) 
+          : [],
       };
     });
   } catch (error) {
@@ -39,12 +38,10 @@ const fetchEvents = async () => {
 };
 
 
-// Fetch data when component mounts
 onMounted(() => {
   fetchEvents();
 });
 
-// Computed property to filter events
 const filteredEvents = computed(() => {
   return eventsData.value.filter(event => {
     const matchesMonth = month.value === "Alle" || event.month === month.value;
