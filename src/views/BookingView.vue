@@ -6,7 +6,7 @@ import BookingOption from '../components/BookingOption.vue';
     <main class="main-content">
         <div class="content-wrapper">
             <section class="event-info">
-                <img src="/img/Hotel-Odeon_RAIS7137.jpg" class="event-img" alt="event img">
+              <img :src="dinnerdays.jpg" alt="">
                 <p class="event-description">
                     Oplev kulinarisk forkælelse til Dinner Days på Restaurant H.C. by Meyers, hvor vi præsenterer en særligt sammensat menu af bæredygtige og økologiske råvarer. Nyd en unik madoplevelse med sæsonens bedste smage i elegante omgivelser – perfekt til en aften med venner, familie eller en særlig anledning.
                 </p>
