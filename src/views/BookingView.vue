@@ -90,10 +90,10 @@ const updateAvailableTickets = async () => {
       
       <!-- Unique Event Section (Dinner Days på H.C. by Meyers) -->
       <section class="ticket-booking">
-        <h2 class="event-title">{{ eventDetails?.name || 'Event Name' }}</h2>
+        <h2 class="event-title">{{ eventDetails?.name || 'Dinner Days på H.C. by Meyers' }}</h2>
         <div class="event-details">
-          <p class="event-date">Dato: {{ eventDetails?.date || 'Unknown date' }}</p>
-          <p class="event-location">{{ eventDetails?.location || 'Unknown location' }}</p>
+          <p class="event-date">Dato: {{ eventDetails?.date || '14. oktober 2024' }}</p>
+          <p class="event-location">{{ eventDetails?.location || 'Hotel Odeon' }}</p>
         </div>
         <div class="booking-options">
           <BookingOption date="DEN 14 OKTOBER" time="oktober 2024 – 16:30-19:30" price="259,00 DKK" />
