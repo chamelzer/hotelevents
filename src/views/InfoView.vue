@@ -3,27 +3,26 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import EventsData from "@/data.json";
 
-const eventDetails = ref(null); // Make sure eventDetails is defined as ref
+const eventDetails = ref(null); 
 const route = useRoute();
-const eventId = route.params.id; // Assuming this ID exists
+const eventId = route.params.id; 
 
-// Fetch event details when the component mounts
+
 const fetchEventDetails = async () => {
   try {
-    // Fetch the event details from Firebase
+    
     const response = await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events/${eventId}.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch event details');
     }
     const firebaseData = await response.json();
 
-    // Find corresponding event in local data.json
-    const localEventData = EventsData[eventId]; // Assuming eventId matches the key in data.json
+    
+    const localEventData = EventsData[eventId];
 
-    // Combine the data from Firebase and local data
     eventDetails.value = {
       ...firebaseData,
-      image: localEventData ? localEventData.image : null, // Ensure you map the image correctly
+      image: localEventData ? localEventData.image : null, 
     };
   } catch (error) {
     console.error('Error fetching event details:', error);
@@ -44,7 +43,6 @@ onMounted(fetchEventDetails);
 
     <div class="event-background">
         <div class="event-container">
-        <!-- Left Column: Event Info -->
         <div class="event-info">
             <div v-if="eventDetails">
             <h1 class="title">{{ eventDetails.name }}</h1>
@@ -55,7 +53,6 @@ onMounted(fetchEventDetails);
             </div>
         </div>
     
-        <!-- Right Column: Event Image -->
         <div class="event-image">
             <div v-if="eventDetails && eventDetails.image">
             <img :src="eventDetails.image" :alt="eventDetails.name" class="event-photo" />
@@ -147,7 +144,7 @@ onMounted(fetchEventDetails);
     font-weight: bold;
     color: white;
   }
-  .p-button:hover::deep {
+  .p-button:hover:deep {
     background-color: #C25D29;
     cursor: pointer;
   }

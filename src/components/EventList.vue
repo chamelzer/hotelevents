@@ -14,37 +14,28 @@ const fetchEvents = async () => {
   try {
     const response = await fetch("https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events.json");
     if (!response.ok) {
-      throw new Error("Failed to fetch data from Firebase");
+      throw new Error("fejl");
     }
     const firebaseData = await response.json();
 
-    // Transform the Firebase data into an array and merge with local data
     eventsData.value = Object.entries(firebaseData).map(([id, event]) => {
       const localData = EventsData[id];  
       return {
-        id, // Keep the ID from Firebase
-        ...event, // Spread Firebase event details
-        image: localData ? localData.image : null, // Use image from local data if available
-        buttons: localData
-          ? [
-              localData.primaryButton && { label: localData.primaryButton, url: "#", color: "#00bfff", style: "primary" },
-              localData.secondaryButton && { label: localData.secondaryButton, url: "#ff5733", style: "secondary" }
-            ].filter(Boolean) // Filter out null entries if any button is missing
-          : [], // Default to empty array if no buttons in local data
+        id, 
+        ...event, 
+        image: localData ? localData.image : null, 
       };
     });
   } catch (error) {
-    console.error("Error fetching data: ", error);
+    console.error("fejl:", error);
   }
 };
 
 
-// Fetch data when component mounts
 onMounted(() => {
   fetchEvents();
 });
 
-// Computed property to filter events
 const filteredEvents = computed(() => {
   return eventsData.value.filter(event => {
     const matchesMonth = month.value === "Alle" || event.month === month.value;
@@ -60,7 +51,7 @@ const tagColors = {
 };
 
 const getTagColor = (tag) => {
-  return tagColors[tag] || "#E1C58B";
+  return tagColors[tag] || "#ffffff";
 };
 
 </script>
