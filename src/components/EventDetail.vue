@@ -28,7 +28,7 @@ const props = defineProps({
 
 // Opdater availableTickets i Firebase
 const updateAvailableTickets = async () => {
-  console.log('Knap kaldt!'); 
+  console.log('Knap kaldt!');
   if (eventDetails.value && eventDetails.value.availableTickets > 0) {
     // Før opdatering af billetter
     console.log('Før opdatering, tilgængelige billetter:', eventDetails.value.availableTickets);
@@ -37,7 +37,7 @@ const updateAvailableTickets = async () => {
       const newAvailableTickets = eventDetails.value.availableTickets - 1; // Reducer med 1 billet
       console.log('Opdatering: ny antal billetter:', newAvailableTickets); // Log ny værdi
 
-      // Opdater database med reduceret antal billetter
+      // Opdater database med reduceret antal billetter via REST API
       const response = await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/${eventId}.json`, {
         method: 'PATCH', // PATCH opdaterer kun de nødvendige felter
         headers: {
@@ -63,7 +63,6 @@ const updateAvailableTickets = async () => {
     alert('Der er ikke flere billetter tilgængelige.');
   }
 };
-
 
 onMounted(() => {
   fetchEventDetails();
@@ -92,7 +91,7 @@ onMounted(() => {
             :availableTickets="eventDetails?.availableTickets"
           />
         </div>
-  
+
         <button v-if="eventDetails?.availableTickets" @click="updateAvailableTickets" class="buy-tickets-btn">
           Køb billetter
         </button>

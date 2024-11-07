@@ -1,48 +1,46 @@
 <script setup>
-import { ref, onMounted } from 'vue'; // Importer ref og onMounted fra Vue
-import { getDatabase, ref as dbRef, get } from '../firebaseConfig'; 
- // Importer Firebase-funktioner
+import { ref, onMounted } from 'vue';
 import EventDetail from '@/components/EventDetail.vue';
 import BookingOption from '../components/BookingOption.vue';
-
-
-// Initialiser database
-const database = getDatabase();
 
 const loading = ref(true);
 const eventDescription = ref('');
 const eventDetails = ref(null);
 
+// Hent eventdetaljer ved hjælp af REST API
 const fetchEventDetails = async () => {
   try {
-    // Her hentes dataene fra Firebase
-    const dbReference = dbRef(database, 'event3');
-    const snapshot = await get(dbReference);
+    // Hent eventdata fra Firebase Realtime Database via REST API
+    const response = await fetch('https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/event3.json');
     
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      console.log('Fetched event data:', data);  // Log data for fejlfinding
-
-      // Håndter eventbeskrivelsen som HTML
-      eventDescription.value = data.description;
-
-      // Håndter eventdetaljer
-      eventDetails.value = {
-        name: data.name,
-        date: data.date,
-        location: data.location || 'Unknown location',
-        availableTickets: data.availableTickets,
-        price: data.price
-      };
-    } else {
-      console.log("No event data available.");
+    if (!response.ok) {
+      throw new Error('Fejl ved hentning af event detaljer');
     }
+
+    const data = await response.json();
+    console.log('Hentede eventdata:', data); // Log data for fejlfinding
+    console.log('Event description:', data.description); 
+
+    // Håndter eventbeskrivelsen som HTML
+    eventDescription.value = data.description;
+    console.log('Event description:', eventDescription.value); // Log beskrivelsen for at se om den er korrekt
+
+    // Håndter eventdetaljer
+    eventDetails.value = {
+      name: data.name,
+      date: data.date,
+      location: data.location || 'Ukendt location',
+      availableTickets: data.availableTickets,
+      price: data.price,
+      image: data.image || '/img/default.jpg' // Brug default billede, hvis ikke angivet
+    };
   } catch (error) {
-    console.error('Error fetching event details:', error);
+    console.error('Der opstod en fejl:', error);
   } finally {
     loading.value = false;
   }
 };
+
 
 // Fetch event details when the component is mounted
 onMounted(() => {
@@ -51,22 +49,25 @@ onMounted(() => {
 
 // Opdatering af billetter
 const updateAvailableTickets = async () => {
-
   if (eventDetails.value && eventDetails.value.availableTickets > 0) {
     try {
       const newAvailableTickets = eventDetails.value.availableTickets - 1;
-      await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/event3.json`, {
-        method: 'PATCH',
+      const response = await fetch('https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/event3.json', {
+        method: 'PATCH', // PATCH opdaterer kun de nødvendige felter
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ availableTickets: newAvailableTickets }),
+        body: JSON.stringify({ availableTickets: newAvailableTickets }), // Send ny værdi
       });
+
+      if (!response.ok) {
+        throw new Error('Fejl ved opdatering af billetter');
+      }
 
       // Opdater UI med de nye billetter
       eventDetails.value.availableTickets = newAvailableTickets;
     } catch (error) {
-      console.error('Error updating available tickets:', error);
+      console.error('Der opstod en fejl ved opdatering af billetter:', error);
     }
   } else {
     alert('Der er ikke flere billetter tilgængelige.');
@@ -74,16 +75,14 @@ const updateAvailableTickets = async () => {
 };
 </script>
 
-
 <template>
   <main class="main-content">
     <div class="content-wrapper">
       <!-- Event Info Section -->
       <section class="event-info">
-        <img :src="eventDetails?.image" class="event-img" alt="Event image" v-if="eventDetails?.image" />
-        <p v-else>Ingen billede tilgængelig</p> <!-- Hvis billedet ikke findes -->
+        <img :src="`/dinnerdays.jpg`" class="event-img" alt="event image" />
         <p v-if="loading">Loading...</p>
-        <p v-else v-html="eventDetails?.description || 'Beskrivelse ikke tilgængelig'"></p>
+        <p v-else v-html="eventDescription || 'Beskrivelse ikke tilgængelig'"></p>
       </section>
       
       <!-- Event Details Section with EventDetail component -->
@@ -91,10 +90,10 @@ const updateAvailableTickets = async () => {
       
       <!-- Unique Event Section (Dinner Days på H.C. by Meyers) -->
       <section class="ticket-booking">
-        <h2 class="event-title">Dinner Days på H.C. by Meyers</h2>
+        <h2 class="event-title">{{ eventDetails?.name || 'Event Name' }}</h2>
         <div class="event-details">
-          <p class="event-date">Dato: 14. oktober 2024 - 16:30-19:30</p>
-          <p class="event-location">Hotel Odeon, Odense</p>
+          <p class="event-date">Dato: {{ eventDetails?.date || 'Unknown date' }}</p>
+          <p class="event-location">{{ eventDetails?.location || 'Unknown location' }}</p>
         </div>
         <div class="booking-options">
           <BookingOption date="DEN 14 OKTOBER" time="oktober 2024 – 16:30-19:30" price="259,00 DKK" />
@@ -102,7 +101,6 @@ const updateAvailableTickets = async () => {
           <BookingOption date="DEN 3 DECEMBER" time="December 2024 – 16:30-19:30" price="259,00 DKK" />
         </div>
         
-      
         <button @click="updateAvailableTickets" class="buy-tickets-btn">Køb billetter</button>
         
         <div class="contact-info">
