@@ -5,7 +5,7 @@ import { Carousel, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 import EventsData from '@/data.json';
 
-// Carousel configuration for displaying 3 cards at a time
+// Carousel configuration
 const config = {
   itemsToShow: 3.3,
   wrapAround: true,
