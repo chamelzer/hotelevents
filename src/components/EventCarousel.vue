@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Navigation } from 'vue3-carousel';
+// import 'vue3-carousel/dist/carousel.css';
+// import { Carousel, Slide, Navigation } from 'vue3-carousel';
 
 const config = {
   itemsToShow: 3,
@@ -23,37 +23,7 @@ const images = [
 </script>
 
 <template>
-  <Carousel v-bind="config">
-    <Slide class="slide-container" v-for="(image, index) in images" :key="index">
-      <div class="carousel-item">
-        <img :src="image" alt="Beer Image" />
-      </div>
-    </Slide>
 
-        <div class="image">
-          {{ event.image }} 
-          <div class="date">
-            <div class="month"> {{ event.month }} </div>
-            <div class="day"> {{ event.day }} </div>
-          </div>
-        </div>
-
-        <div class="content">
-          <div class="tagdiv">
-            <p class="tag"> {{ event.tag }} </p>
-          </div>
-
-          <div>
-            <h3 class="title"> {{ event.title }} </h3>
-            <p class="time"> {{ event.time }} </p>
-          </div>
-
-          <div class="buttons">
-            <button class="primaryButton"> {{ event.primaryButton }} </button>
-            <button class="secondaryButton"> {{ event.secondaryButton }} </button>
-          </div>
-        </div>
-  </Carousel>
 </template>
 
 <style scoped>

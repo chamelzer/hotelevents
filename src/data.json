@@ -1,33 +1,22 @@
 {
     "event1": {
-      "image": "/event1.jpg",
-      "secondaryButton": "Læs mere",
-      "description": "Læs mereLæs mereLæs mereLæs mereLæs mereLæs mere"
+      "image": "/cozyloungebar.jpg"
     },
     "event2": {
-      "image": "event2.jpg",
-      "primaryButton": "Book bord",
-      "secondaryButton": "Læs mere"
+      "image": "/andreasodbjerg2.png"
     },
     "event3": {
-      "image": "event3.jpg",
-      "primaryButton": "Book bord",
-      "secondaryButton": "Læs mere"
+      "image": "/dinnerdays.jpg"
     },
     "event4": {
-      "image": "event3.jpg",
-      "primaryButton": "Book bord",
-      "secondaryButton": "Læs mere"
+      "image": "/cozyloungebar1.jpg"
     },
     "event5": {
-      "image": "event3.jpg",
-      "primaryButton": "Book bord",
-      "secondaryButton": "Læs mere"
+      "image": "/beer.jpg"
     },
     "event6": {
-      "image": "event3.jpg",
-      "primaryButton": "Book bord",
-      "secondaryButton": "Læs mere"
+      "image": "/cristmas.jpg"
     }
+    
   }
   
