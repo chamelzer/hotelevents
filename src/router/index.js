@@ -15,6 +15,11 @@ const router = createRouter({
       path: "/event/:id",
       name: "event",
       component: InfoView
+    },
+    {
+      path: '/booking',
+      name: 'booking',
+      component: BookingView
     }
   ]
 })
