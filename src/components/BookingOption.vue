@@ -1,54 +1,55 @@
 <template>
-    <div class="booking-option">
-      <div class="booking-date-time">
-        <h3 class="booking-date">{{ date }}</h3>
-        <p class="booking-time">{{ time }}</p>
-      </div>
-      <div class="booking-price-quantity">
-        <span class="booking-price">{{ price }}</span>
-        <div class="quantity-selector">
-          <button @click="decreaseQuantity" class="quantity-btn" aria-label="Decrease quantity">-</button>
-          <span class="quantity">{{ quantity }}</span>
-          <button @click="increaseQuantity" class="quantity-btn" aria-label="Increase quantity">+</button>
-        </div>
+  <div class="booking-option">
+    <div class="booking-date-time">
+      <h3 class="booking-date">{{ date }}</h3>
+      <p class="booking-time">{{ time }}</p>
+    </div>
+    <div class="booking-price-quantity">
+      <span class="booking-price">{{ price }}</span>
+      <div class="quantity-selector">
+        <button @click="decreaseQuantity" class="quantity-btn" aria-label="Decrease quantity">-</button>
+        <span class="quantity">{{ quantity }}</span>
+        <button @click="increaseQuantity" class="quantity-btn" aria-label="Increase quantity">+</button>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'BookingOption',
-    props: {
-      date: {
-        type: String,
-        required: true
-      },
-      time: {
-        type: String,
-        required: true
-      },
-      price: {
-        type: String,
-        required: true
-      }
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BookingOption',
+  props: {
+    date: {
+      type: String,
+      required: true
     },
-    data() {
-      return {
-        quantity: 0
-      }
+    time: {
+      type: String,
+      required: true
     },
-    methods: {
-      increaseQuantity() {
-        this.quantity++
-      },
-      decreaseQuantity() {
-        if (this.quantity > 0) {
-          this.quantity--
-        }
+    price: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      quantity: 0
+    };
+  },
+  methods: {
+    increaseQuantity() {
+      this.quantity++;
+    },
+    decreaseQuantity() {
+      if (this.quantity > 0) {
+        this.quantity--;
       }
     }
   }
-  </script>
+};
+</script>
+
   
   <style scoped>
   .booking-option {
