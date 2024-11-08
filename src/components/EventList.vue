@@ -110,9 +110,9 @@ const getTagColor = (tag) => {
                         <button v-if="event.secondaryButton" class="s-button">
                           {{ event.secondaryButton }}
                         </button>
-                        <button v-if="event.primaryButton" class="p-button">
+                        <router-link to="/booking" v-if="event.primaryButton" class="p-button">
                           {{ event.primaryButton }}
-                        </button>
+                        </router-link>
                       </div>
                 <div>
             </div>
