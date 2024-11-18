@@ -2,6 +2,7 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 
+
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -42,13 +43,32 @@ const toggleMenu = () => {
         </div>
 
         <div :class="['mobile-links', { 'menu-open': isMenuOpen }]">
-            <a href="#">Hotel</a>
-            <a href="#">Restaurant</a>
-            <a href="#">Business</a>
-            <a href="#">Tilbud</a>
-            <a class="event-link" href="#">Events</a>
-            <a href="#">Kontakt</a>
-            <a href="#">Parkering</a>
+            <div class="menu-logo">
+                <img src="/logo.png" alt="Logo">
+            </div>
+            <div class="hamburger-links">
+                <a href="#">
+                    <span class="menu-number">1</span> Hotel
+                </a>
+                <a href="#">
+                    <span class="menu-number">2</span> Restaurant
+                </a>
+                <a href="#">
+                    <span class="menu-number">3</span> Business
+                </a>
+                <a href="#">
+                    <span class="menu-number">4</span> Tilbud
+                </a>
+                <a href="#">
+                    <span class="menu-number">5</span> Events
+                </a>
+                <a href="#">
+                    <span class="menu-number">6</span> Kontakt
+                </a>
+                <a href="#">
+                    <span class="menu-number">7</span> Parkering
+                </a>
+            </div>
         </div>
     </nav>
 </template>
@@ -134,12 +154,9 @@ nav {
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 75px; 
-    right: 20px;
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    border-radius: 8px;
     z-index: 999;
 }
 
@@ -149,7 +166,6 @@ nav {
     text-decoration: none;
     color: black;
     font-size: 14px;
-    margin: 10px 0;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -203,6 +219,7 @@ nav {
     border: none;
     cursor: pointer;
     padding: 29px 45px 28px 45px;
+    max-height: 19px;
     font-size: 15px;
 }
 
@@ -227,18 +244,97 @@ nav {
     }
 
     .mobile-links {
-        top: 75px;
-        right: 0; 
         width: 100%;
         box-shadow: none; 
     }
 
     .logo {
         position: absolute;
+        margin: 0%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .lang {
         position: absolute;
     }
 }
+
+.mobile-links {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100%;
+    width: 420px;
+    background-color: white;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+  }
+  
+  .mobile-links.menu-open {
+    right: 0;
+  }
+  
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-content a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .mobile-links img {
+    height: 30px;
+    width: auto;
+  }
+
+  .menu-logo {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: -15px;
+  }
+
+  .hamburger-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #F8F6F4;
+    font-size: 15px;
+    text-transform: none;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.hamburger-links a:hover {
+    background-color: white;
+}
+
+.menu-number {
+    font-weight: bold;
+    color: #AB4E1C; 
+    flex-shrink: 0; 
+    border: 1px solid black;
+    width: 100px;
+    padding: 20px 0 20px 0;
+}
+
+.hamburger-links a {
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row-reverse;
+}
+
 </style>
