@@ -48,7 +48,7 @@ onUnmounted(() => {
         <div id="navbar" :class="{ scrolled: isScrolled }">
         <div class="left-container">
           <div class="logo">
-            <img src="/logo.png" alt="Logo" />
+            <img :src="isScrolled ? '/logo.png' : '/logo2.png'" alt="Logo" />
           </div>
           <div class="links-container">
             <a href="#">Hotel</a>
@@ -134,8 +134,15 @@ nav {
 #navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    height: 75px;
+    align-items: stretch; /* Ensure children stretch to navbar height */
+    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    height: 130px; /* Default height */
+    background-color: white;
+}
+
+#navbar.scrolled {
+    height: 75px; /* Height when scrolled */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .left-container {
@@ -144,14 +151,24 @@ nav {
 }
 
 .logo img {
+    width: 180px;
+    height: auto;
+    margin-left: 1.5vw;
+    margin-right: 3vw;
+    transition: 0.3s ease-in-out;
+}
+
+#navbar.scrolled .logo img {
     width: 70px;
     height: auto;
     margin-left: 4vw;
-    margin-right: 5vw;
-}
+    margin-right: 6vw;
+    transition: 0.3s ease-in-out;
+  }
 
 .links-container {
     display: flex;
+    height: 100%;
 }
 
 .links-container a {
@@ -159,9 +176,11 @@ nav {
     text-decoration: none;
     color: black;
     font-size: 12px;
-    transition: background-color 0.3s ease-in-out;
-    padding: 31px 10px 29px 10px;
-    height: 100%;
+    transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0 10px; /* Padding for text inside links */
+    height: 100%; /* Match navbar height */
+    display: flex;
+    align-items: center; /* Vertically center the text */
     border-left: 0.5px solid #F9F6F4;
     border-right: 0.5px solid #F9F6F4;
 }
@@ -259,15 +278,25 @@ nav {
 }
 
 .cta-button {
-    margin-right: 0;
-    margin-left: auto;
     background-color: #AB4E1C;
     color: white;
     border: none;
     cursor: pointer;
-    padding: 29px 45px 28px 45px;
-    max-height: 19px;
+    padding: 0 45px; /* Adjust horizontal padding as needed */
     font-size: 15px;
+    height: 100%; /* Make the button's height equal to its parent's height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content inside the button */
+    transition: height 0.3s ease-in-out; /* Smoothly transition height changes */
+    box-sizing: border-box; /* Include padding/borders in height calculation */
+}
+
+.right-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 100%; /* Ensure children align with the navbar height */
 }
 
 @media (max-width: 1024px) {
@@ -311,7 +340,7 @@ nav {
 .mobile-links {
     position: fixed;
     top: 0;
-    right: -450px; /* Fully hidden */
+    right: -450px;
     height: 100%;
     width: 420px;
     background-color: white;
@@ -321,7 +350,7 @@ nav {
   }
   
   .mobile-links.menu-open {
-    right: 0; /* Slide into view */
+    right: 0;
   }
   
   .mobile-links.menu-open {
@@ -440,21 +469,21 @@ nav {
     overflow: hidden;
   }
 
-  
-  #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    height: 100px; /* Default height */
-    background-color: white;
-  }
-  
-  #navbar.scrolled {
-    height: 75px; /* Height when scrolled */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for emphasis */
-  }
+  @media (max-width: 1024px) {
+    /* Ensure the navbar height is fixed */
+    #navbar {
+        height: 100px !important; /* Fixed height when on smaller screens */
+    }
 
-  
-  
+    .cta-button {
+        margin-top: 160px; /* Position it below the navbar */
+        height: 60px ;
+        display: flex;
+    }
+
+    .logo img {
+        width: 130px;
+    }
+  }
+ 
 </style>
