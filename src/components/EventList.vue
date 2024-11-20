@@ -8,6 +8,7 @@ const eventsData = ref([]);
 const router = useRouter();
 const month = ref("Alle");
 const search = ref("");
+const category = ref("Alle");
 
 
 const fetchEvents = async () => {
@@ -77,6 +78,17 @@ const getTagColor = (tag) => {
         </select>
         <input v-model="search" type="text" placeholder="søg" class="searchbar">
       </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="category-filter">
+              <button 
+                v-for="tag in ['Alle', 'Populært', 'Deals', 'Nyhed']" 
+                :key="tag" 
+                :class="{ active: category === tag }" 
+                @click="category = tag">
+                {{ tag }}
+              </button>
+            </div>
   
       <div class="cards">
         <div 
@@ -276,6 +288,24 @@ main {
     height: 34px;
     widows: 150px;
     margin-right: 20px;
+  }
+
+  .category-filter {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .category-filter button {
+    border: none;
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  .category-filter button.active {
+    background-color: #AB4E1C;
+    color: white;
   }
   
 </style>
