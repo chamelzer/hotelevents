@@ -479,10 +479,12 @@ nav {
         margin-top: 160px; /* Position it below the navbar */
         height: 60px ;
         display: flex;
+
     }
 
     .logo img {
         width: 130px;
+        height: auto;
     }
   }
  
