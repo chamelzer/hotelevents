@@ -1,5 +1,5 @@
 <script setup>
-import EventCards from '@/components/EventCards.vue';
+import Newsletter from '@/components/NewsLetter.vue';
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from "vue-router";
 import EventsData from "@/data.json";
@@ -8,7 +8,12 @@ const eventsData = ref([]);
 const router = useRouter();
 const month = ref("Alle");
 const search = ref("");
-const category = ref("Alle");
+const cat = ref("Alle");
+
+const navigateToBooking = () => {
+  router.push('/booking');
+};
+
 
 
 const fetchEvents = async () => {
@@ -19,14 +24,17 @@ const fetchEvents = async () => {
     }
     const firebaseData = await response.json();
 
-    eventsData.value = Object.entries(firebaseData).map(([id, event]) => {
-      const localData = EventsData[id];  
-      return {
-        id, 
-        ...event, 
-        image: localData ? localData.image : null, 
-      };
-    });
+    eventsData.value = Object.entries(firebaseData)
+      .map(([id, event]) => {
+        const localData = EventsData[id];  
+        return {
+          id,
+          ...event,
+          image: localData ? localData.image : null,
+          dateObject: new Date(event.date),
+        };
+      })
+      .sort((a, b) => a.dateObject - b.dateObject);
   } catch (error) {
     console.error("fejl:", error);
   }
@@ -41,7 +49,8 @@ const filteredEvents = computed(() => {
   return eventsData.value.filter(event => {
     const matchesMonth = month.value === "Alle" || event.month === month.value;
     const matchesSearch = event.name.toLowerCase().includes(search.value.toLowerCase());
-    return matchesMonth && matchesSearch;
+    const matchesCategory = cat.value === "Alle" || event.category === cat.value;
+    return matchesMonth && matchesSearch && matchesCategory;
   });
 });
 
@@ -62,7 +71,7 @@ const getTagColor = (tag) => {
       <div class="filter">
         <h1 class="headline">Alle Events</h1>
         <select v-model="month" class="filter-drop">
-          <option value="Alle">Alle</option>
+          <option value="Alle">Måned (alle)</option>
           <option value="Jan">Januar</option>
           <option value="Feb">Februar</option>
           <option value="Mar">Marts</option>
@@ -76,26 +85,23 @@ const getTagColor = (tag) => {
           <option value="Nov">November</option>
           <option value="Dec">December</option>
         </select>
-        <input v-model="search" type="text" placeholder="søg" class="searchbar">
+        <input v-model="search" type="text" placeholder="Søg efter event" class="searchbar">
+        <div class="category-filter">
+          <button 
+            v-for="category in ['Alle', 'Mad og drikke', 'Musik og underholdning', 'Drinks og hygge']" 
+            :key="category" 
+            :class="{ active: cat === category }" 
+            @click="cat = category">
+            {{ category }}
+          </button>
+        </div>
       </div>
-
-            <!-- Category Filter Buttons -->
-            <div class="category-filter">
-              <button 
-                v-for="tag in ['Alle', 'Populært', 'Deals', 'Nyhed']" 
-                :key="tag" 
-                :class="{ active: category === tag }" 
-                @click="category = tag">
-                {{ tag }}
-              </button>
-            </div>
   
       <div class="cards">
         <div 
           v-for="event in filteredEvents" 
           :key="event.id" 
           class="card" 
-          @click="router.push(`/event/${event.id}`)"
         >
                 
                 <img :src="event.image" :alt="event.name" class="event-image" />
@@ -119,18 +125,27 @@ const getTagColor = (tag) => {
                       <h4 class="event-time"> {{ event.date }} </h4>
                       <h4 class="event-price"> {{ event.price }} </h4>
                       <div class="buttons">
-                        <button v-if="event.secondaryButton" class="s-button">
-                          {{ event.secondaryButton }}
-                        </button>
-                        <router-link to="/booking" v-if="event.primaryButton" class="p-button">
-                          {{ event.primaryButton }}
-                        </router-link>
+                        <button
+                        v-if="event.secondaryButton"
+                        class="s-button"
+                        @click="router.push(`/event/${event.id}`)"
+                      >
+                        {{ event.secondaryButton }}
+                      </button>
+                        <button
+                        v-if="event.primaryButton"
+                        class="p-button"
+                        @click="navigateToBooking"
+                      >
+                        {{ event.primaryButton }}
+                      </button>
                       </div>
                 <div>
             </div>
           </div>
         </div>
       </div>
+      <Newsletter />
     </main>
   </template>
 
@@ -142,34 +157,6 @@ main {
   
   .cards h1 {
     font-size: 10px;
-  }
-  
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 50px;
-    justify-content: center;
-    width: 100%;
-
-  }
-  
-  .card {
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.207);
-    width: 400px;
-    height: 470px;
-    margin: 25px;
-    cursor: pointer;
-    position: relative;
-    background-color: white;
-  }
-
-  .event-image {
-    max-width: 400px;
-    max-height: 230px;
-    width: 100%; 
-    height: auto;
-    object-fit: cover; 
-    object-position: center; 
   }
 
   .card-info {
@@ -247,6 +234,10 @@ main {
     color: black;
   }
 
+  .headline {
+    padding-bottom: 20px;
+  }
+
   .p-button {
     background-color: #AB4E1C;
     padding: 10px 15px 10px 15px ;
@@ -294,6 +285,7 @@ main {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    margin-top: 20px;
   }
   
   .category-filter button {
@@ -307,5 +299,102 @@ main {
     background-color: #AB4E1C;
     color: white;
   }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    justify-content: flex-start; /* Align cards to the left */
+    width: calc(100% - 14vw);
+    margin-left: 7vw;
+    gap: 3vw; /* Equal space between cards */
+  }
+  
+  .card {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.207);
+    max-width: 400px; /* Maximum width constraint */
+    width: calc(33.33% - 2vw); /* Fit 3 cards per row */
+    height: 470px;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+  }
+  
+  .event-image {
+    max-width: 100%;
+    max-height: 230px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  /* Media query for large iPad screens */
+  @media (max-width: 1200px) {
+    .cards {
+      justify-content: space-between; /* Space cards evenly */
+    }
+  
+    .card {
+      width: calc(33.33% - 2vw); /* Fit 3 cards per row */
+      height: 420px; /* Adjust height for iPad screens */
+    }
+  
+    .event-image {
+      max-height: 200px; /* Adjust image height */
+    }
+  }
+  
+  /* Media query for smaller iPads and tablets */
+  @media (max-width: 1024px) {
+    .cards {
+      justify-content: center; /* Center cards */
+    }
+  
+    .card {
+      width: calc(50% - 2vw); /* Fit 2 cards per row */
+      height: 420px;
+    }
+  
+    .event-image {
+      max-height: 200px;
+    }
+
+    .headline {
+      font-size: 20px;
+    }
+  
+  }
+  
+  /* Media query for smaller screens (mobile devices) */
+  @media (max-width: 768px) {
+    .card {
+      width: calc(100% - 4vw); /* Single card per row */
+      height: 400px; /* Adjust height */
+    }
+  
+    .event-image {
+      max-height: 180px; /* Further reduce image height */
+    }
+  }
+
+  /* Media query for mobile screens */
+  @media (max-width: 768px) {
+    .event-price {
+      margin-top: -15px; /* Move the price up */
+      margin-bottom: 10px; /* Add spacing between price and buttons */
+      text-align: left; /* Ensure it aligns to the left */
+    }
+  }
+
+  /* Ensure categories wrap on smaller screens */
+@media (max-width: 768px) {
+  .category-filter {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 10px; /* Maintain spacing between buttons */
+  }
+}
+
   
 </style>

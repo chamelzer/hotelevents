@@ -96,6 +96,10 @@
     .left-foot p {
         margin-top: -15px;
     }
+
+    .certificates {
+        margin-bottom: 50px;
+    }
     
     .certificates img {
         width: 100px;

@@ -82,7 +82,7 @@ const updateAvailableTickets = async () => {
       <section class="event-info">
         <img :src="`/dinnerdays.jpg`" class="event-img" alt="event image" />
         <p v-if="loading">Loading...</p>
-        <p v-else v-html="eventDescription || 'Beskrivelse ikke tilgængelig'"></p>
+        <p class="description" v-else v-html="eventDescription || 'Beskrivelse ikke tilgængelig'"></p>
       </section>
       
       <!-- Event Details Section with EventDetail component -->
@@ -123,6 +123,8 @@ const updateAvailableTickets = async () => {
   margin: 0 auto;
   display: flex;
   gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping of sections */
+
 }
 
 .event-info {
@@ -134,13 +136,16 @@ const updateAvailableTickets = async () => {
   background-color: #fff;
   box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.25);
   padding: 31px 44px;
+  margin-bottom: 50px;
 }
 
 .event-img {
-  width: 604px;
-  height: 476px;
-  margin-bottom: 20px;
+  width: 100%; /* Full width */
+  max-height: 300px; /* Restrict height */
+  object-fit: cover;
+  display: block;
 }
+
 
 .event-title {
   color: #000;
@@ -180,4 +185,92 @@ const updateAvailableTickets = async () => {
   color: #4b4643;
   font-size: 18px;
 }
+
+/* Responsive Styles for iPad and Mobile */
+@media (max-width: 1024px) {
+  .content-wrapper {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;
+  }
+
+  .event-img {
+    width: 100%; /* Full width */
+    max-height: 300px; /* Restrict height */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space below image */
+    
+  }
+
+  .event-info {
+    width: 100%; /* Full width */
+    margin-bottom: 20px;
+  }
+
+  .ticket-booking {
+    width: 100%; /* Full width */
+  }
+
+  .event-title {
+    font-size: 36px; /* Adjust font size */
+  }
+
+  .buy-tickets-btn {
+    font-size: 16px;
+    padding: 15px 20px;
+    margin-top: 20px;
+  }
+
+  .contact-info {
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .contact-title {
+    font-size: 16px;
+  }
+  .description {
+    width: 90%; /* Adjust the width to make it more narrow */
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center text alignment */
+    font-size: 16px; 
+    padding-top: 20px;
+  }
+}
+
+/* General ticket-booking styles for smaller screens */
+@media (max-width: 1024px) {
+  .ticket-booking {
+    width: 70%; /* Reduce width for smaller screens */
+    padding: 20px; /* Adjust padding for compact view */
+    font-size: 14px; /* Smaller font size */
+    margin-top: 20px; /* Add spacing between sections */
+    margin-bottom: 50px;
+  }
+
+  .main-content {
+    margin-top: 0;
+  }
+
+  .event-title {
+    font-size: 32px; /* Reduce title font size */
+    text-align: center; /* Center align the title */
+  }
+
+  .booking-options {
+    margin-top: 20px; /* Reduce space between options */
+  }
+
+  .buy-tickets-btn {
+    font-size: 16px; /* Adjust button font size */
+    padding: 12px 15px; /* Adjust padding for the button */
+    margin-top: 20px; /* Reduce space above the button */
+  }
+
+  .contact-info {
+    padding: 15px; /* Reduce padding */
+    font-size: 14px; /* Adjust font size */
+    text-align: center; /* Center align content */
+  }
+}
+
 </style>

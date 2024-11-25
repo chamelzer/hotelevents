@@ -55,7 +55,7 @@ onUnmounted(() => {
             <a href="#">Restaurant</a>
             <a href="#">Business</a>
             <a href="#">Tilbud</a>
-            <a class="event-link" href="#">Events</a>
+            <router-link to="/" class="event-link">Events</router-link>
             <a href="#">Kontakt</a>
             <a href="#">Parkering</a>
           </div>

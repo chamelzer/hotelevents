@@ -2,8 +2,6 @@
     import EventList from '@/components/EventList.vue';
     import EventCarousel from '@/components/EventCarousel.vue';
     import EventCards from '@/components/EventCards.vue';
-    
-
 </script>
 
 <template>
@@ -12,7 +10,6 @@
     <h1 class="title">Events</h1>
     </div>
 
-    <EventCards />
     <EventCarousel />
     <EventList />
 </template>
@@ -36,5 +33,18 @@
         transform: translate(-50%, -50%);
         font-size: 64px;
     }
+
+      /* Media query for mobile screens */
+  @media (max-width: 1024px) {
+
+    .hero-image img{
+        height: 300px;
+    }
+
+    .title {
+        top: 27%;
+        font-size: 50px;
+    }
+  }
 
 </style>
