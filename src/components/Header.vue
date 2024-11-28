@@ -27,7 +27,7 @@ const handleOutsideClick = (event) => {
 };
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 0; // True if scrolled down
+  isScrolled.value = window.scrollY > 0;
 };
 
 onMounted(() => {
@@ -134,14 +134,14 @@ nav {
 #navbar {
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* Ensure children stretch to navbar height */
+    align-items: stretch;
     transition: height 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    height: 130px; /* Default height */
+    height: 130px;
     background-color: white;
 }
 
 #navbar.scrolled {
-    height: 75px; /* Height when scrolled */
+    height: 75px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -177,10 +177,10 @@ nav {
     color: black;
     font-size: 12px;
     transition: background-color 0.3s ease-in-out, padding 0.3s ease-in-out;
-    padding: 0 10px; /* Padding for text inside links */
-    height: 100%; /* Match navbar height */
+    padding: 0 10px;
+    height: 100%;
     display: flex;
-    align-items: center; /* Vertically center the text */
+    align-items: center;
     border-left: 0.5px solid #F9F6F4;
     border-right: 0.5px solid #F9F6F4;
 }
@@ -282,21 +282,21 @@ nav {
     color: white;
     border: none;
     cursor: pointer;
-    padding: 0 45px; /* Adjust horizontal padding as needed */
+    padding: 0 45px;
     font-size: 15px;
-    height: 100%; /* Make the button's height equal to its parent's height */
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the content inside the button */
-    transition: height 0.3s ease-in-out; /* Smoothly transition height changes */
-    box-sizing: border-box; /* Include padding/borders in height calculation */
+    justify-content: center;
+    transition: height 0.3s ease-in-out;
+    box-sizing: border-box;
 }
 
 .right-container {
     display: flex;
     align-items: center;
     gap: 20px;
-    height: 100%; /* Ensure children align with the navbar height */
+    height: 100%;
 }
 
 @media (max-width: 1024px) {
@@ -453,16 +453,16 @@ nav {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 998; /* Behind the mobile menu (z-index 999) */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
     opacity: 0;
-    pointer-events: none; /* Prevent interaction when hidden */
+    pointer-events: none;
     transition: opacity 0.3s ease-in-out;
   }
 
   .overlay.menu-open {
     opacity: 1;
-    pointer-events: auto; /* Allow interaction when visible */
+    pointer-events: auto;
   }
 
   body.menu-open {
@@ -470,13 +470,12 @@ nav {
   }
 
   @media (max-width: 1024px) {
-    /* Ensure the navbar height is fixed */
     #navbar {
-        height: 100px !important; /* Fixed height when on smaller screens */
+        height: 100px !important;
     }
 
     .cta-button {
-        margin-top: 160px; /* Position it below the navbar */
+        margin-top: 160px;
         height: 60px ;
         display: flex;
 
