@@ -38,7 +38,7 @@ const updateAvailableTickets = async () => {
       console.log('Opdatering: ny antal billetter:', newAvailableTickets); // Log ny værdi
 
       // Opdater database med reduceret antal billetter via REST API
-      const response = await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/${eventId}.json`, {
+      const response = await fetch(`https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/${eventId}.json`, {
         method: 'PATCH', // PATCH opdaterer kun de nødvendige felter
         headers: {
           'Content-Type': 'application/json',

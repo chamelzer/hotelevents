@@ -11,7 +11,7 @@ const eventDetails = ref(null);
 const fetchEventDetails = async () => {
   try {
     // Hent eventdata fra Firebase Realtime Database via REST API
-    const response = await fetch('https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events/event3.json');
+    const response = await fetch('https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/events/event3.json');
     
     if (!response.ok) {
       throw new Error('Fejl ved hentning af event detaljer');

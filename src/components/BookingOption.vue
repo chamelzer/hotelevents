@@ -58,7 +58,7 @@ export default {
         const newQuantity = this.quantity;
         
         // Opdater Firebase database (REST API)
-        const response = await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/${this.eventId}.json`, {
+        const response = await fetch(`https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/${this.eventId}.json`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',

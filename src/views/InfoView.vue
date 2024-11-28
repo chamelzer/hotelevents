@@ -23,7 +23,7 @@ const infoAnimationClass = ref('hidden-left');
 const fetchEventDetails = async () => {
   try {
     
-    const response = await fetch(`https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events/${eventId}.json`);
+    const response = await fetch(`https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/events/${eventId}.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch event details');
     }

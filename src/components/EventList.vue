@@ -18,7 +18,7 @@ const navigateToBooking = () => {
 
 const fetchEvents = async () => {
   try {
-    const response = await fetch("https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/events.json");
+    const response = await fetch("https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/events.json");
     if (!response.ok) {
       throw new Error("fejl");
     }
