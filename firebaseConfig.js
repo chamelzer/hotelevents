@@ -8,9 +8,9 @@ import { getDatabase, ref, get } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyC7SJ6TjXsD9_GjW6GOJcNBDI61w1Byyk0",
   authDomain: "hotelevents-3ef54.firebaseapp.com",
-  databaseURL: "https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "hotelevents-3ef54",
-  storageBucket: "hotelevents-3ef54.appspot.com",
+  databaseURL: "https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "hotelevents-c5779",
+  storageBucket: "hotelevents-c5779.appspot.com",
   messagingSenderId: "931209889996",
   appId: "1:931209889996:web:3e5b03a0b10fb6562d1a69"
 };
