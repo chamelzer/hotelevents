@@ -176,7 +176,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   margin-top: 50px;
-  justify-content: flex-start; /* Align cards to the left */
+  justify-content: flex-start; 
   width: calc(100% - 14vw);
   margin-left: 7vw;
   gap: 3vw; 
@@ -360,13 +360,13 @@ main {
 .carousel {
   display: flex;
   justify-content: center;
-  padding: 0; /* Avoid extra spacing */
+  padding: 0; 
 }
 
 .slide-container {
-  flex: 0 0 calc(100% / var(--carousel-items-to-show, 3.3)); /* Dynamic width */
-  min-width: 400px; /* Ensure minimum card width */
-  box-sizing: border-box; /* Include borders and padding */
+  flex: 0 0 calc(100% / var(--carousel-items-to-show, 3.3)); 
+  min-width: 400px; 
+  box-sizing: border-box; 
 }
 
 .card {
