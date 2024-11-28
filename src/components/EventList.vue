@@ -255,12 +255,12 @@ main {
     padding: 10px 15px 10px 15px ;
   }
 
-  .p-button:hover:deep {
+  .p-button:hover {
     background-color: #C25D29;
     cursor: pointer;
   }
   
-  .s-button:hover:deep {
+  .s-button:hover {
     border: #4B4643 1px solid;
     cursor: pointer;
     color: #4B4643;
@@ -277,7 +277,7 @@ main {
     border-radius: 0;
     border: #C1C1C2 1px solid;
     height: 34px;
-    widows: 150px;
+    width: 150px;
     margin-right: 20px;
   }
 
@@ -304,16 +304,16 @@ main {
     display: flex;
     flex-wrap: wrap;
     margin-top: 50px;
-    justify-content: flex-start; /* Align cards to the left */
+    justify-content: flex-start;
     width: calc(100% - 14vw);
     margin-left: 7vw;
-    gap: 3vw; /* Equal space between cards */
+    gap: 3vw;
   }
   
   .card {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.207);
-    max-width: 400px; /* Maximum width constraint */
-    width: calc(33.33% - 2vw); /* Fit 3 cards per row */
+    max-width: 400px;
+    width: calc(33.33% - 2vw); 
     height: 470px;
     cursor: pointer;
     position: relative;
@@ -329,30 +329,28 @@ main {
     object-position: center;
   }
   
-  /* Media query for large iPad screens */
   @media (max-width: 1200px) {
     .cards {
-      justify-content: space-between; /* Space cards evenly */
+      justify-content: space-between;
     }
   
     .card {
-      width: calc(33.33% - 2vw); /* Fit 3 cards per row */
-      height: 420px; /* Adjust height for iPad screens */
+      width: calc(33.33% - 2vw); 
+      height: 420px;
     }
   
     .event-image {
-      max-height: 200px; /* Adjust image height */
+      max-height: 200px; 
     }
   }
   
-  /* Media query for smaller iPads and tablets */
   @media (max-width: 1024px) {
     .cards {
-      justify-content: center; /* Center cards */
+      justify-content: center;
     }
   
     .card {
-      width: calc(50% - 2vw); /* Fit 2 cards per row */
+      width: calc(50% - 2vw);
       height: 420px;
     }
   
@@ -366,33 +364,30 @@ main {
   
   }
   
-  /* Media query for smaller screens (mobile devices) */
   @media (max-width: 768px) {
     .card {
-      width: calc(100% - 4vw); /* Single card per row */
-      height: 400px; /* Adjust height */
+      width: calc(100% - 4vw); 
+      height: 400px; 
     }
   
     .event-image {
-      max-height: 180px; /* Further reduce image height */
+      max-height: 180px; 
     }
   }
 
-  /* Media query for mobile screens */
   @media (max-width: 768px) {
     .event-price {
-      margin-top: -15px; /* Move the price up */
-      margin-bottom: 10px; /* Add spacing between price and buttons */
-      text-align: left; /* Ensure it aligns to the left */
+      margin-top: -15px; 
+      margin-bottom: 10px; 
+      text-align: left; 
     }
   }
 
-  /* Ensure categories wrap on smaller screens */
 @media (max-width: 768px) {
   .category-filter {
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 10px; /* Maintain spacing between buttons */
+    flex-wrap: wrap; 
+    gap: 10px; 
   }
 }
 

@@ -50,7 +50,6 @@
         color: white;
         display: flex;
         justify-content: space-between;
-        flex: wrap;
     }
     
     .left-foot {
@@ -119,7 +118,6 @@
     @media (max-width: 1024px) {
         .right-foot {
             flex-direction: column; 
-            align-items: right; 
             margin-top: 90px; 
         }
         .certificates {

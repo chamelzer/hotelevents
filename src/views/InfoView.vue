@@ -15,7 +15,6 @@ const navigateToBooking = () => {
 };
 
 
-// Reactive variables for animation classes
 const imageAnimationClass = ref('hidden-right');
 const infoAnimationClass = ref('hidden-left');
 
@@ -45,11 +44,10 @@ const fetchEventDetails = async () => {
 onMounted(() => {
   fetchEventDetails();
 
-  // Trigger animations
   setTimeout(() => {
     imageAnimationClass.value = 'slide-in-right';
     infoAnimationClass.value = 'slide-in-left';
-  }, 100); // Delay for smooth animation
+  }, 100);
 });
 </script>
 
@@ -89,7 +87,7 @@ onMounted(() => {
     margin-top: 100px;
   }
 
-  .events-link:hover::v-deep {
+  .events-link:hover {
     text-decoration: underline;
   }
   .events-link, .homelink {
@@ -110,7 +108,7 @@ onMounted(() => {
     align-items: flex-start;
     gap: 20px; 
     margin-top: 100px;
-    height: auto; /* Adjusts to content height */
+    height: auto;
   }
   
   .event-info {
@@ -149,8 +147,8 @@ onMounted(() => {
     padding-bottom: 150px;
     margin-top: 100px; 
     width: 70vw; 
-    display: flex; /* Ensures the child fills the height */
-    align-items: stretch; /* Stretch to match child height */
+    display: flex;
+    align-items: stretch;
   }
 
   .price {
@@ -165,22 +163,21 @@ onMounted(() => {
     font-weight: bold;
     color: white;
   }
-  .p-button:hover:deep {
+  .p-button:hover {
     background-color: #C25D29;
     cursor: pointer;
   }
 
-/* Media Query for iPad */
 @media (max-width: 1024px) {
   .event-container {
-    flex-direction: column-reverse; /* Stack the content, image on top */
+    flex-direction: column-reverse;
     align-items: center;
   }
 
   .description {
     font-size: 16px;
-    width: 100px; /* Make it narrower */
-    margin: 0 auto; /* Center align */
+    width: 100px;
+    margin: 0 auto;
   }
 
   .breadcrumb {
@@ -193,16 +190,16 @@ onMounted(() => {
   }
 
   .event-background {
-    width: 100%; /* Full width on smaller screens */
+    width: 100%;
     padding: 0;
     margin: 0;
   }
 
   .event-image img {
-    width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 400px; /* Restrict maximum height */
-    object-fit: cover; /* Ensure the image fits the area */
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
   }
 
   .event-image img {
@@ -238,7 +235,6 @@ onMounted(() => {
   
 }
 
-/* Media Query for Mobile */
 @media (max-width: 768px) {
   .event-container {
     flex-direction: column-reverse;
@@ -251,15 +247,15 @@ onMounted(() => {
   }
 
   .event-background {
-    width: 100%; /* Full width on smaller screens */
-    margin-top: 0; /* Remove margin for better alignment */
+    width: 100%;
+    margin-top: 0;
   }
 
   .event-image img {
-    width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 400px; /* Restrict maximum height */
-    object-fit: cover; /* Ensure the image fits the area */
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
   }
 
   .event-info {
@@ -286,18 +282,17 @@ onMounted(() => {
   }
 }
 
-/* Media Query for iPad */
 @media (max-width: 1024px) {
   .description {
-    font-size: 16px; /* Smaller font size */
-    width: 60%; /* Reduce width */
-    margin: 0 auto; /* Center */
+    font-size: 16px;
+    width: 60%;
+    margin: 0 auto;
     
   }
 
   .event-container {
-    margin-top: 0; /* Remove top margin */
-    padding-top: 0; /* Ensure no padding above the container */
+    margin-top: 0;
+    padding-top: 0;
   }
 
   .breadcrumb {
@@ -306,23 +301,21 @@ onMounted(() => {
   
 }
 
-/* Media Query for Mobile */
 @media (max-width: 768px) {
   .description {
-    font-size: 14px; /* Even smaller font size */
-    width: 80%; /* Make it narrower */
-    margin: 0 auto; /* Center */
-    text-align: center; /* Optional: Align text to the center */
+    font-size: 14px;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .event-container {
-    margin-top: 0; /* Remove top margin */
-    padding-top: 0; /* Ensure no padding above the container */
+    margin-top: 0;
+    padding-top: 0;
   }
   
 }
 
-/* Initial hidden state */
 .hidden-right {
   opacity: 0;
   transform: translateX(100%);
@@ -333,7 +326,6 @@ onMounted(() => {
   transform: translateX(-100%);
 }
 
-/* Animation classes */
 .slide-in-right {
   animation: slide-right 0.5s ease-out forwards;
 }
@@ -342,7 +334,6 @@ onMounted(() => {
   animation: slide-left 0.5s ease-out forwards;
 }
 
-/* Keyframes for sliding in */
 @keyframes slide-right {
   from {
     opacity: 0;
@@ -364,8 +355,6 @@ onMounted(() => {
     transform: translateX(0);
   }
 }
-
-
 
 </style>
   
