@@ -18,7 +18,7 @@
  
     .hero-image img{
         filter: brightness(50%);
-        width: 100vw;
+        width: 100%;
         height: 500px;
         object-fit: cover; 
         object-position: center; 
