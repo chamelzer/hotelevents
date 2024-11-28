@@ -71,30 +71,28 @@ img {
     position: absolute;
 }
 
-/* Position dots1 to the top left */
 .dots1 {
-    bottom: 0; /* Align to the top of the container */
-    left: 0; /* Align to the left of the container */
+    bottom: 0;
+    left: 0;
 }
 
-/* Position dots2 to the top right */
 .dots2 {
-    top: 0; /* Align to the top of the container */
-    right: 0; /* Align to the right of the container */
+    top: 0;
+    right: 0; 
 }
 
 @media (max-width: 1024px) {
     .headline {
-        font-size: 40px; /* Smaller headline */
+        font-size: 40px;
     }
 
     .newsletter-container {
-        height: 350px; /* Reduce height for iPad screens */
+        height: 350px;
     }
 
     .description {
-        font-size: 16px; /* Smaller description */
-        width: 50vw; /* Adjust width for smaller screens */
+        font-size: 16px;
+        width: 50vw;
     }
 
 }
@@ -103,42 +101,41 @@ img {
 
 @media (max-width: 768px) {
     .headline {
-        font-size: 40px; /* Smaller headline */
+        font-size: 40px;
     }
 
     .newsletter-container {
-        height: 350px; /* Reduce height for iPad screens */
+        height: 350px;
     }
 
     .description {
-        font-size: 16px; /* Smaller description */
-        width: 50vw; /* Adjust width for smaller screens */
+        font-size: 16px;
+        width: 50vw;
     }
 
     button {
-        font-size: 16px; /* Smaller button text */
-        padding: 10px 15px; /* Smaller button size */
+        font-size: 16px;
+        padding: 10px 15px;
     }
 
 }
 
-/* Media query for iPhone (576px and smaller) */
 @media (max-width: 576px) {
     .headline {
-        font-size: 30px; /* Even smaller headline */
+        font-size: 30px;
     }
 
     .newsletter-container {
-        height: 300px; /* Further reduce height for iPhone screens */
+        height: 300px;
     }
     .description {
-        font-size: 14px; /* Even smaller description */
-        width: 70vw; /* Narrower width for smaller screens */
+        font-size: 14px;
+        width: 70vw;
     }
 
     button {
-        font-size: 14px; /* Smaller button text */
-        padding: 8px 12px; /* Smaller button size */
+        font-size: 14px;
+        padding: 8px 12px;
     }
 }
 
