@@ -30,9 +30,9 @@
                     </div>
                 </div>
                 <div class="certificates">
-                    <img src="/public/hotelstars.png" alt="hotelstars">
-                    <img src="/public/greenkey.png" alt="greenkey">
-                    <img src="/public/tripadvisor.png" alt="tripadvisor">
+                    <img src="/hotelstars.png" alt="hotelstars">
+                    <img src="/greenkey.png" alt="greenkey">
+                    <img src="/tripadvisor.png" alt="tripadvisor">
                 </div>
             </div>
         </div>
