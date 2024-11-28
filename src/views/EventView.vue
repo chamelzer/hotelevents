@@ -17,6 +17,7 @@
 <style scoped>
  
     .hero-image img{
+        filter: brightness(50%);
         width: 100vw;
         height: 500px;
         object-fit: cover; 
