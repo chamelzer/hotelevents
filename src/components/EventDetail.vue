@@ -91,10 +91,6 @@ onMounted(() => {
             :availableTickets="eventDetails?.availableTickets"
           />
         </div>
-
-        <button v-if="eventDetails?.availableTickets" @click="updateAvailableTickets" class="buy-tickets-btn">
-          Køb billetter
-        </button>
         
       </section>
     </div>

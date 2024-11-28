@@ -123,7 +123,7 @@ const updateAvailableTickets = async () => {
   margin: 0 auto;
   display: flex;
   gap: 20px;
-  flex-wrap: wrap; /* Allow wrapping of sections */
+  flex-wrap: wrap;
 
 }
 
@@ -140,8 +140,8 @@ const updateAvailableTickets = async () => {
 }
 
 .event-img {
-  width: 100%; /* Full width */
-  max-height: 300px; /* Restrict height */
+  width: 100%;
+  max-height: 300px;
   object-fit: cover;
   display: block;
 }
@@ -186,32 +186,31 @@ const updateAvailableTickets = async () => {
   font-size: 18px;
 }
 
-/* Responsive Styles for iPad and Mobile */
 @media (max-width: 1024px) {
   .content-wrapper {
-    flex-direction: column; /* Stack sections vertically */
+    flex-direction: column;
     align-items: center;
   }
 
   .event-img {
-    width: 100%; /* Full width */
-    max-height: 300px; /* Restrict height */
-    object-fit: cover; /* Maintain aspect ratio */
-    margin-bottom: 20px; /* Space below image */
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
     
   }
 
   .event-info {
-    width: 100%; /* Full width */
+    width: 100%;
     margin-bottom: 20px;
   }
 
   .ticket-booking {
-    width: 100%; /* Full width */
+    width: 100%;
   }
 
   .event-title {
-    font-size: 36px; /* Adjust font size */
+    font-size: 36px;
   }
 
   .buy-tickets-btn {
@@ -229,21 +228,21 @@ const updateAvailableTickets = async () => {
     font-size: 16px;
   }
   .description {
-    width: 90%; /* Adjust the width to make it more narrow */
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Center text alignment */
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
     font-size: 16px; 
     padding-top: 20px;
   }
 }
 
-/* General ticket-booking styles for smaller screens */
+
 @media (max-width: 1024px) {
   .ticket-booking {
-    width: 70%; /* Reduce width for smaller screens */
-    padding: 20px; /* Adjust padding for compact view */
-    font-size: 14px; /* Smaller font size */
-    margin-top: 20px; /* Add spacing between sections */
+    width: 70%;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 20px;
     margin-bottom: 50px;
   }
 
@@ -252,24 +251,24 @@ const updateAvailableTickets = async () => {
   }
 
   .event-title {
-    font-size: 32px; /* Reduce title font size */
-    text-align: center; /* Center align the title */
+    font-size: 32px;
+    text-align: center;
   }
 
   .booking-options {
-    margin-top: 20px; /* Reduce space between options */
+    margin-top: 20px;
   }
 
   .buy-tickets-btn {
-    font-size: 16px; /* Adjust button font size */
-    padding: 12px 15px; /* Adjust padding for the button */
-    margin-top: 20px; /* Reduce space above the button */
+    font-size: 16px;
+    padding: 12px 15px;
+    margin-top: 20px;
   }
 
   .contact-info {
-    padding: 15px; /* Reduce padding */
-    font-size: 14px; /* Adjust font size */
-    text-align: center; /* Center align content */
+    padding: 15px;
+    font-size: 14px;
+    text-align: center;
   }
 }
 
