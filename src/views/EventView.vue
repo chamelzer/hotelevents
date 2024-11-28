@@ -35,7 +35,6 @@
         font-size: 64px;
     }
 
-      /* Media query for mobile screens */
   @media (max-width: 1024px) {
 
     .hero-image img{
