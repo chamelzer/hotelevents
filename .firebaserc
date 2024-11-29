@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "hotelevents-c5779"
-  }
+    "default": "hotelevents-c5779",
+    "hotelevents": "hotelevents-c5779"
+  },
+  "targets": {},
+  "etags": {}
 }
