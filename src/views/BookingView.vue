@@ -52,7 +52,7 @@ const updateAvailableTickets = async () => {
   if (eventDetails.value && eventDetails.value.availableTickets > 0) {
     try {
       const newAvailableTickets = eventDetails.value.availableTickets - 1;
-      const response = await fetch('https://hotelevents-3ef54-default-rtdb.europe-west1.firebasedatabase.app/event3.json', {
+      const response = await fetch('https://hotelevents-c5779-default-rtdb.europe-west1.firebasedatabase.app/event3.json', {
         method: 'PATCH', // PATCH opdaterer kun de nødvendige felter
         headers: {
           'Content-Type': 'application/json',
