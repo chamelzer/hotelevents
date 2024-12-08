@@ -4,14 +4,14 @@ import { ref, onMounted, computed } from 'vue';
 import { useRouter } from "vue-router";
 import EventsData from "@/data.json";
 
-const eventsData = ref([]); 
-const router = useRouter();
+const eventsData = ref([]);  // Array til at gemme events fra Firebase
+const router = useRouter(); // Router for navigation
 const month = ref("Alle");
 const search = ref("");
 const cat = ref("Alle");
 
 const navigateToBooking = () => {
-  router.push('/booking');
+  router.push('/booking'); // Navigerer til booking-siden med dynmic routing
 };
 
 
@@ -24,33 +24,34 @@ const fetchEvents = async () => {
     }
     const firebaseData = await response.json();
 
+    // henter Firebase-data og kombinerer det med lokal data (billeder)
     eventsData.value = Object.entries(firebaseData)
       .map(([id, event]) => {
-        const localData = EventsData[id];  
+        const localData = EventsData[id];  // Henter lokal data baseret på ID
         return {
-          id,
-          ...event,
-          image: localData ? localData.image : null,
-          dateObject: new Date(event.date),
+          id,  // Bevarer event-ID'et
+          ...event, // kopierer alle firebase event data
+          image: localData ? localData.image : null, // Sætter billedet fra lokal data, hvis det findes
+          dateObject: new Date(event.date), // Konverterer datoen til et Date-objekt
         };
       })
-      .sort((a, b) => a.dateObject - b.dateObject);
+      .sort((a, b) => a.dateObject - b.dateObject);  // Sorterer events efter dato
   } catch (error) {
     console.error("fejl:", error);
   }
 };
 
-
+// Henter events, når komponenten bliver indlæst
 onMounted(() => {
-  fetchEvents();
+  fetchEvents(); // Kalder fetchEvents, når komponentet er indlæst
 });
 
-const filteredEvents = computed(() => {
-  return eventsData.value.filter(event => {
+const filteredEvents = computed(() => { //computed anvedes fordi der er flere dynamiske værdier der skal filtreres 
+  return eventsData.value.filter(event => { //retunerer en specifik betingelse.
     const matchesMonth = month.value === "Alle" || event.month === month.value;
     const matchesSearch = event.name.toLowerCase().includes(search.value.toLowerCase());
     const matchesCategory = cat.value === "Alle" || event.category === cat.value;
-    return matchesMonth && matchesSearch && matchesCategory;
+    return matchesMonth && matchesSearch && matchesCategory; // Returnerer kun events, der opfylder alle filtre
   });
 });
 
@@ -60,6 +61,7 @@ const tagColors = {
   "Nyhed": "#95ACAC",
 };
 
+// Funktion til at hente farven for et givet tag
 const getTagColor = (tag) => {
   return tagColors[tag] || "#ffffff";
 };
